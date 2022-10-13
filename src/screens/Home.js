@@ -18,10 +18,10 @@ export default function Home() {
         load ? <Text>load</Text> :(
             data.map((post)=>(
                 <View>
-                    <Text>{post.id}</Text>
-                    <Text>{post.name}</Text>
-                    <Text>{post.color}</Text>
-                    <Text>{post.price}</Text>
+                  <Text>----------------------------------------------------</Text>
+                    <Text>ten san pham:{post.name}</Text>
+                    <Text>mau sac:{post.color}</Text>
+                    <Text>gia tien:{post.price}</Text>
                     <Text></Text>
                 </View>
             ))
