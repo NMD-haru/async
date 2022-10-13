@@ -1,10 +1,31 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View} from "react-native";
+import React, { useEffect, useState } from "react";
 
 export default function Home() {
+    const [data ,setData] = useState([])
+    const [load ,setload] = useState(true)
+    const url ="http://192.168.215.12:3000/products"
+    useEffect(()=>{
+        fetch(url)
+        .then((Response)=>Response.json())
+        .then((json)=>setData(json))
+        .catch((error)=>console.error(error))
+        .finally(()=>setload(false));
+    })
   return (
     <View style={styles.main}>
-      <Image style={styles.img} source={require("../../assets/Homeimg.gif")} />
+        {
+        load ? <Text>load</Text> :(
+            data.map((post)=>(
+                <View>
+                    <Text>{post.id}</Text>
+                    <Text>{post.name}</Text>
+                    <Text>{post.color}</Text>
+                    <Text>{post.price}</Text>
+                    <Text></Text>
+                </View>
+            ))
+        )}
     </View>
   );
 }
@@ -13,11 +34,9 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: "#f8f8ff",
-    alignItems: "center",
-    justifyContent: "center",
   },
   img: {
-    width:266,
-    height:266,
+    width:166,
+    height:166,
   }
 });
