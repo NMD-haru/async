@@ -4,6 +4,7 @@ import MainLogo from "../components/MainLogo";
 import MainInput from "../components/MainInput";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Signin({ navigation }) {
   const [email, setemail] = useState("");
@@ -49,7 +50,7 @@ export default function Signin({ navigation }) {
     navigation.navigate("ForgotPassword");
   }
   return (
-    <View style={styles.main}>
+    <SafeAreaView style={styles.main}>
       <MainLogo title="Sign in" />
 
       <MainInput
@@ -79,7 +80,7 @@ export default function Signin({ navigation }) {
           onPress={goForgotPassword}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
